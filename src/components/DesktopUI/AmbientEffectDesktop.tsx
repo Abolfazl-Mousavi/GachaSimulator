@@ -4,8 +4,9 @@ import { hexToRgb } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 
 const AmbientEffectDesktop = () => {
-  const { state } = useAppContext();
-  const [colorRGB, setColorRGB] = useState(hexToRgb(state.SelectedGameColor));
+  const { SelectedGameColor } = useAppContext();
+  const [selectedGameColor, setSelectedGameColor] = SelectedGameColor;
+  const [colorRGB, setColorRGB] = useState(hexToRgb(selectedGameColor));
   useEffect(() => {
     var EffectEl = document.getElementById("AmbientEffect");
     EffectEl &&
@@ -18,8 +19,8 @@ const AmbientEffectDesktop = () => {
     rgba(${colorRGB?.r}, ${colorRGB?.g}, ${colorRGB?.b}, 0.019) 88%,
     rgba(${colorRGB?.r}, ${colorRGB?.g}, ${colorRGB?.b}, 0) 100%
   )`);
-    setColorRGB(hexToRgb(state.SelectedGameColor));
-  }, [state.SelectedGameColor]);
+    setColorRGB(hexToRgb(selectedGameColor));
+  }, [SelectedGameColor]);
 
   return (
     <div

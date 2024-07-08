@@ -8,21 +8,27 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import supportedGames from "@/lib/data/supportedGames";
-import { Game } from "@/lib/data/supportedGames";
+import { IGame } from "@/lib/data/supportedGames";
 import { useAppContext } from "@/context";
 
 export function CarouselDesktop() {
-  const { state, setState } = useAppContext();
+  const { SelectedGameColor, SelectedGame } = useAppContext();
+  const [selectedGameColor, setSelectedGameColor] = SelectedGameColor;
+  const [selectedGame, setSelectedGame] = SelectedGame;
   useEffect(() => {
     let carouselItems = document.querySelectorAll("div.CarouselItems");
-    //dbl click event listener for carousel (CUZ SHADCN DOESNT SUPPORT EVENT LISTENERS)
+
     carouselItems.forEach(function (item, idx) {
+      //dblclick,mouseover,click event listeners for carousel (CUZ SHADCN DOESNT SUPPORT EVENT LISTENERS)
       item.addEventListener("dblclick", function () {
         supportedGames[idx].isAvailable &&
           (window.location.href = supportedGames[idx].slug);
       });
       item.addEventListener("mouseover", function () {
-        setState({ ...state, SelectedGameColor: supportedGames[idx].colorHex });
+        setSelectedGameColor(supportedGames[idx].colorHex);
+      });
+      item.addEventListener("click", function () {
+        setSelectedGame(supportedGames[idx]);
       });
     });
   }, []);
@@ -32,14 +38,14 @@ export function CarouselDesktop() {
       opts={{
         align: "start",
       }}
-      className="flex justify-center items-center px-36"
+      className="flex justify-center items-center w-1/2"
     >
       <CarouselContent>
-        {supportedGames.map((g: Game) => (
+        {supportedGames.map((g: IGame) => (
           <CarouselItem
             key={g.id}
             id={g.imageSlug}
-            className="basis-1/5 CarouselItems"
+            className="basis-1/5 CarouselItems "
           >
             <Card
               className={`bg-transparent border-2 border-current border-separate border-spacing-1 ${
@@ -60,7 +66,7 @@ export function CarouselDesktop() {
                   }
                 />
                 {!g.isAvailable && (
-                  <span className="text-lg font-semibold absolute overflow-hidden">
+                  <span className="text-md font-semibold absolute overflow-hidden rotate-45">
                     comming soon ...
                   </span>
                 )}
