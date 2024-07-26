@@ -10,7 +10,7 @@ const Footer = () => {
         <Link href={"/about"}>about</Link>
       </Button>
       <Button variant={"link"}>
-        <Link href={"/privacy-policy"}>privacy policy</Link>
+        <Link href={"/disclaimer"}>Disclaimer</Link>
       </Button>
       <Button variant={"link"} title="github repository">
         <Link href={Constants.githubRepo}>github</Link>

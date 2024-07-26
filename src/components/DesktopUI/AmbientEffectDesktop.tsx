@@ -2,39 +2,31 @@
 import { useAppContext } from "@/context";
 import { hexToRgb } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
-
+import { useTheme } from "next-themes";
 const AmbientEffectDesktop = () => {
+  const { theme, setTheme } = useTheme();
   const { SelectedGameColor } = useAppContext();
   const [selectedGameColor, setSelectedGameColor] = SelectedGameColor;
-  const [colorRGB, setColorRGB] = useState(hexToRgb(selectedGameColor));
+  const [backgroundcolor, setBackgroundcolor] = useState(18);
+
   useEffect(() => {
-    var EffectEl = document.getElementById("AmbientEffect");
-    EffectEl &&
-      (EffectEl.style.backgroundImage = ` linear-gradient(
-    rgba(${colorRGB?.r}, ${colorRGB?.g}, ${colorRGB?.b}, 1) 0%,
-    rgba(${colorRGB?.r}, ${colorRGB?.g}, ${colorRGB?.b}, 0.3) 50%,
-    rgba(${colorRGB?.r}, ${colorRGB?.g}, ${colorRGB?.b}, 0.15) 65%,
-    rgba(${colorRGB?.r}, ${colorRGB?.g}, ${colorRGB?.b}, 0.075) 75.5%,
-    rgba(${colorRGB?.r}, ${colorRGB?.g}, ${colorRGB?.b}, 0.037) 82.85%,
-    rgba(${colorRGB?.r}, ${colorRGB?.g}, ${colorRGB?.b}, 0.019) 88%,
-    rgba(${colorRGB?.r}, ${colorRGB?.g}, ${colorRGB?.b}, 0) 100%
-  )`);
-    setColorRGB(hexToRgb(selectedGameColor));
-  }, [SelectedGameColor]);
+    setBackgroundcolor(theme == "dark" ? 18 : 225);
+    document.body.style.background = selectedGameColor;
+  }, [SelectedGameColor, theme]);
 
   return (
     <div
       id="AmbientEffect"
-      className="absolute w-full h-full inset-0 z-[-1] transition-all"
+      className="absolute rotate-180 w-full h-full inset-0 z-[-1] fade-in-0"
       style={{
         background: ` linear-gradient(
-    rgba(${colorRGB?.r}, ${colorRGB?.g}, ${colorRGB?.b}, 1) 0%,
-    rgba(${colorRGB?.r}, ${colorRGB?.g}, ${colorRGB?.b}, 0.3) 50%,
-    rgba(${colorRGB?.r}, ${colorRGB?.g}, ${colorRGB?.b}, 0.15) 65%,
-    rgba(${colorRGB?.r}, ${colorRGB?.g}, ${colorRGB?.b}, 0.075) 75.5%,
-    rgba(${colorRGB?.r}, ${colorRGB?.g}, ${colorRGB?.b}, 0.037) 82.85%,
-    rgba(${colorRGB?.r}, ${colorRGB?.g}, ${colorRGB?.b}, 0.019) 88%,
-    rgba(${colorRGB?.r}, ${colorRGB?.g}, ${colorRGB?.b}, 0) 100%
+    rgba(${backgroundcolor},${backgroundcolor},${backgroundcolor}, 1) 0%,
+    rgba(${backgroundcolor},${backgroundcolor},${backgroundcolor}, 0.3) 50%,
+    rgba(${backgroundcolor},${backgroundcolor},${backgroundcolor}, 0.15) 65%,
+    rgba(${backgroundcolor},${backgroundcolor},${backgroundcolor}, 0.075) 75.5%,
+    rgba(${backgroundcolor},${backgroundcolor},${backgroundcolor}, 0.037) 82.85%,
+    rgba(${backgroundcolor},${backgroundcolor},${backgroundcolor}, 0.019) 88%,
+    rgba(${backgroundcolor},${backgroundcolor},${backgroundcolor}, 0) 100%
   )`,
       }}
     />

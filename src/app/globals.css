@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: #ffffff;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -73,5 +73,6 @@
   }
   body {
     @apply bg-background text-foreground;
+    @apply transition duration-500;
   }
 }

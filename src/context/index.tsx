@@ -13,7 +13,7 @@ export const Provider = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  const [selectedGameColor, setSelectedGameColor] = useState("#DF4FB6");
+  const [selectedGameColor, setSelectedGameColor] = useState("#121156");
   const [selectedGame, setSelectedGame] = useState<IGame>(supportedGames[0]);
   return (
     <AppContext.Provider

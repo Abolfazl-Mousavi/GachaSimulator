@@ -14,7 +14,7 @@ const supportedGames: IGame[] = [
   {
     id: 1,
     name: "Genshin Impact",
-    slug: "https://gi-wish-simulator.uzairashraf.dev/",
+    slug: "https://wishsimulator.app/",
     imageSlug: "/assets/images/logos/Genshin_Impact.webp",
     bannerImageSlug: "/assets/images/hero/genshin_hero.png",
     officialWebsite: "https://genshin.hoyoverse.com/",
@@ -38,11 +38,11 @@ const supportedGames: IGame[] = [
   {
     id: 3,
     name: "Honkai Star Rail",
-    slug: "honkai-star-rail",
+    slug: "https://hsr.wishsimulator.app/",
     imageSlug: "/assets/images/logos/Honkai_Star_Rail.png",
     bannerImageSlug: "/assets/images/hero/starrail_hero.png",
     officialWebsite: "https://hsr.hoyoverse.com",
-    isAvailable: false,
+    isAvailable: true,
     description:
       "Hop aboard the Astral Express and experience the galaxy's infinite wonders filled with adventure and thrills. Players will meet new companions across various worlds and maybe even run into some familiar faces.",
     colorHex: "#E2B3C7",
