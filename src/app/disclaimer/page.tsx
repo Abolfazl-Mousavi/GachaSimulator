@@ -26,7 +26,7 @@ const Disclaimer = () => {
           <AccordionTrigger>Use at Your Own Risk</AccordionTrigger>
           <AccordionContent>
             Your use of the Service is at your sole risk. The Service is
-            provided on an "AS IS" and "AS AVAILABLE" basis. We disclaim all
+            provided on an {`"AS IS" and "AS AVAILABLE"`} basis. We disclaim all
             liability for any loss or damage of any kind incurred as a result of
             the use of the Service or reliance on any information provided on
             the Service.
